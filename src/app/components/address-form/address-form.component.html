@@ -1,0 +1,75 @@
+<header class="header content-header">
+    <div class="logo-content">
+      <img src="../assets/book.png"   viewBox="0 0 24 24" fill="#658292" width="40px" height="40px" alt="Logo Image">
+      <div>
+        <span class="person-text content-header">ADRESS</span>
+        <span class="person-text person_address">BOOK</span>
+      </div>
+    </div>
+  </header>
+  <div class="form-content">
+  <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+    <div class="form-head">PERSON ADDRESS FORM</div>
+    <!-- Name -->
+    <div class="name">
+    <label for="name" style="margin-left: 50px;" >Name:</label>
+    <input id="name" formControlName="name" type="text" placeholder="Enter Fullname" />
+    </div>
+    <br><br>
+    
+    <!-- Phone -->
+    <div class="phone">
+    <label for="phone" style="margin-left: 50px;">Phone:</label>
+    <input id="phone" formControlName="phone" type="text" placeholder="Enter Phone Number" />
+    </div>
+    <br><br>
+  
+     <!-- address -->
+     <div class="address">
+      <label for="address" style="margin-left: 50px;">Adress:</label>
+      <input id="address" formControlName="address" type="text" placeholder="Enter House No. or Street" />
+      </div>
+      <br><br>
+  
+    <!-- State -->
+    <div class="state-city-zipcode-container">
+    <div [formGroup]="userForm" class="form-container">
+      <label for="state" style="margin-left: 50px;">State:</label>
+      <select id="state" formControlName="state">
+        <option value="" disabled selected>Select a state</option>
+        <option *ngFor="let state of states">{{ state }}</option>
+      </select>
+      </div>
+    
+    <!-- City -->
+   
+    <div class="city">
+      <label for="city" style="margin-left: 50px;">City:</label>
+      <select id="city" formControlName="city">
+        <option value="" disabled selected>Select City</option>
+        <option *ngFor="let city of cities[userForm.get('state')?.value]" [value]="city">
+          {{ city }}
+        </option>
+      </select>
+    </div>
+  
+    <!-- Zipcode -->
+    <div>
+    <label for="zipcode" style="margin-left: 50px;" >Zip Code:</label>
+    <input id="zipcode" formControlName="zipcode" type="text" placeholder="Enter Zipcode" />
+  </div>
+    </div>
+  
+    <br><br>
+    <button *ngIf="enableEdit else addBtn" id="submit" type="submit" style="margin-left: 500px">Edit</button>
+
+    <ng-template #addBtn>
+        <button  id="submit" type="submit" style="margin-left: 500px">ADD</button>
+
+    </ng-template>
+    <button  id="reset" type="reset" style="margin-left: 50px" (click)="resetUserForn()">RESET</button>
+  
+  </form>
+  </div>
+  
+  

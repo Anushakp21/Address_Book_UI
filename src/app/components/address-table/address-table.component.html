@@ -1,0 +1,48 @@
+<header class="header content-header">
+    <div class="logo-content">
+      <img src="../assets/book.png"  viewBox="0 0 24 24" fill="#658292" width="40px" height="40px" alt="Logo Image">
+      <div>
+        <span class="person-text content-header">ADRESS</span>
+        <span class="person-text person_address">BOOK</span>
+      </div>
+    </div>
+  </header>
+
+  
+<div class="main-content">
+    <div class="header-content">
+      <div class="emp-detail-text">
+        <!-- Employee Details <div class="emp-count">{{employeeCount}}</div> -->
+      </div>
+      <a class="add-button" routerLink="/address-form">
+        <img src="../assets/icons/add-24px.svg" alt="">Add Address</a>
+    </div> <!-- header-content-->
+    <div class="table-main">
+      <table id ="table-display" class="table">
+          <tr>
+              <th>Name</th>
+              <th>Number</th>
+              <th>Address</th>
+              <th>State</th>
+              <th>City</th>
+              <th>Zipcode</th>
+              <th>Action</th>
+          </tr>
+           <tr *ngFor="let address of addreesDetails">
+             
+              <td>{{address.name}}</td>
+              <td>{{address.phone}}</td>
+              <td>{{address.address}}</td>
+              <td>{{address.state}}</td>
+              <td>{{address.city}}</td>
+              <td>{{address.zipcode}}</td>
+           
+               <td>
+                  <img id={{address.addressID}} src="../assets/delete.png"  viewBox="0 0 24 24" fill="#658292" width="18px" height="18px" alt="delete" (click)="remove(address.addressID)">
+                  &nbsp;
+                  <img id={{address.addressID}} src="../assets/register.png"  viewBox="0 0 24 24" fill="#658292" width="18px" height="18px"  alt="edit" (click)="update(address)"> 
+              </td> 
+          </tr> 
+      </table>  
+  </div>
+  </div>
